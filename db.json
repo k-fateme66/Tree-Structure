@@ -1,0 +1,28 @@
+{
+  "tree": {
+    "id": "iii",
+    "name": "xxx",
+    "value": "yyy",
+    "children": [
+      {
+        "id": "iii1",
+        "name": "xxxx1",
+        "value": "yyyy1",
+        "children": []
+      },
+      {
+        "id": "iii2",
+        "name": "xxxx2",
+        "value": "yyyy2",
+        "children": [
+          {
+            "id": "iii3",
+            "name": "xxxx3",
+            "value": "yyyy3",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+}

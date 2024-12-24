@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Tree Structure</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tree Structure</h1>
+            <div id="tree"></div>
+            <div id="setting">
+                <div class="setting_group">
+                    <p class="setting_group_title">Change Tree View: Horizontal
+                        or
+                        Vertical</p>
+                    <div class="radio_button">
+                        <input type="radio" id="horizontal" name="view"
+                            value="horizontal">
+                        <label for="html">Horizontal</label>
+                    </div>
+                    <div class="radio_button">
+                        <input type="radio" id="vertical" name="view"
+                            value="vertical" checked>
+                        <label for="css">Vertical</label>
+                    </div>
+                </div>
+
+                <div class="setting_group">
+                    <p class="setting_group_title">Find Node by ID</p>
+                    <div class="input_group">
+                        <input type="text" name="getNodeId" id="getNodeId"
+                            placeholder="Enter node id">
+                        <button class="btn" id="getNodeById"
+                            type="button">Search</button>
+                    </div>
+                    <p class="result_getNodeById result"></p>
+                </div>
+
+                <div class="setting_group">
+                    <p class="setting_group_title">Set value for a Node by
+                        ID</p>
+                    <div class="input_group">
+                        <input type="text" name="setValueIdInput"
+                            id="setValueIdInput"
+                            placeholder="Enter node id">
+                        <input type="text" name="setValueInput"
+                            id="setValueInput"
+                            placeholder="Enter value">
+                        <button class="btn" id="setValueNode"
+                            type="button">submit</button>
+                    </div>
+                    <p class="result_SetValue result"></p>
+                </div>
+
+                <div class="setting_group">
+                    <p class="setting_group_title">Set Name for a Node by
+                        ID</p>
+                    <div class="input_group">
+                        <input type="text" name="setNameIdInput"
+                            id="setNameIdInput"
+                            placeholder="Enter node id">
+                        <input type="text" name="setNameInput"
+                            id="setNameInput"
+                            placeholder="Enter Name">
+                        <button class="btn" id="setNameNode"
+                            type="button">submit</button>
+                    </div>
+                    <p class="result_SetName result"></p>
+                </div>
+
+                <div class="setting_group">
+                    <p class="setting_group_title">Hide && Show Node</p>
+                    <div class="input_group">
+                        <input type="text" name="ToggleNodeIdInput"
+                            id="ToggleNodeIdInput"
+                            placeholder="Enter node id">
+                        <button class="btn" id="btnHideNode"
+                            type="button">Hide</button>
+                        <button class="btn" id="btnShowNode"
+                            type="button">Show</button>
+                    </div>
+                    <p class="result_hideNode result"></p>
+                </div>
+
+                <div class="setting_group">
+                    <p class="setting_group_title">Draw Link</p>
+                    <div class="input_group">
+                        <input type="text" name="drawLinkIdInput"
+                            id="drawLinkIdInput"
+                            placeholder="Enter node id">
+                        <input type="text" name="drawLinkColorInput"
+                            id="drawLinkColorInput"
+                            placeholder="Enter color">
+                        <button class="btn" id="btnDrawLink"
+                            type="button">submit</button>
+                    </div>
+                    <p class="result_drawLink result"></p>
+                </div>
+
+                <div class="setting_group">
+                    <p class="setting_group_title">Draw Relate</p>
+                    <div class="input_group">
+                        <input type="text" name="drawRelateIdInput"
+                            id="drawRelateIdInput"
+                            placeholder="Enter node id, example: iii1,iii2">
+                        <input type="text" name="drawRelateColorInput"
+                            id="drawRelateColorInput"
+                            placeholder="Enter color">
+                        <button class="btn" id="btnDrawRelate"
+                            type="button">submit</button>
+                    </div>
+                    <p class="result_drawRelate result"></p>
+                </div>
+
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/app.js" type="module"></script>
+</html>
