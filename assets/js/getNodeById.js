@@ -23,14 +23,15 @@ export function clickHandlerGetNodeId() {
 
     btnGetNodeById.addEventListener('click', (event) => {
         event.preventDefault();
-        const id = inputNodeId.value;
-        const node = getNodeById(id);
 
-        if (id == '') {
+        const nodeId = inputNodeId.value.trim();
+        const node = getNodeById(nodeId);
+
+        if (!nodeId) {
             resultGetNodeById.textContent = 'Please Enter Node Id';
             return
         }
-        (!node) ? resultGetNodeById.textContent = 'Node Not Found' : resultGetNodeById.textContent = `Node Found: ${node.id}, Value: ${node.value}`;
+        resultGetNodeById.textContent = (!node) ? 'Node Not Found' : `Node Found: ${node.id}, Value: ${node.value}`;
     });
 };
 
@@ -41,10 +42,11 @@ export function clickHandlerSetNodeValue() {
     const resultSetValue = document.querySelector('.result_SetValue');
     btnSetValue.addEventListener('click', (event) => {
         event.preventDefault();
-        const id = inputNodeId.value;
-        const value = inputNodeValue.value;
-        const node = getNodeById(id);
-        if (id == '' || value == '') {
+
+        const nodeId = inputNodeId.value.trim();
+        const value = inputNodeValue.value.trim();
+        const node = getNodeById(nodeId);
+        if (!nodeId || !value) {
             resultSetValue.textContent = 'Please Enter Node Id or value';
             return
         }
@@ -66,10 +68,11 @@ export function clickHandlerSetNodeName() {
     const resultSetName = document.querySelector('.result_SetName');
     btnSetName.addEventListener('click', (event) => {
         event.preventDefault();
-        const id = inputNodeId.value;
-        const value = inputNodeName.value;
-        const node = getNodeById(id);
-        if (id == '' || value == '') {
+
+        const nodeId = inputNodeId.value.trim();
+        const value = inputNodeName.value.trim();
+        const node = getNodeById(nodeId);
+        if (!nodeId || !value) {
             resultSetName.textContent = 'Please Enter Node Id or Name';
             return
         }
@@ -89,9 +92,9 @@ export function clickHandlerHideNode() {
     const inputNodeId = document.getElementById('ToggleNodeIdInput');
     const resultHideNode = document.querySelector('.result_hideNode');
     btnHideNode.addEventListener('click', (event) => {
-        const id = inputNodeId.value;
-        const node = getNodeById(id);
-        if (id == '') {
+        const nodeId = inputNodeId.value.trim();
+        const node = getNodeById(nodeId);
+        if (!nodeId) {
             resultHideNode.textContent = 'Please Enter Node Id';
             return
         }
@@ -109,9 +112,9 @@ export function clickHandlerShowNode() {
     const inputNodeId = document.getElementById('ToggleNodeIdInput');
     const resultShowNode = document.querySelector('.result_hideNode');
     btnShowNode.addEventListener('click', (event) => {
-        const id = inputNodeId.value;
-        const node = getNodeById(id);
-        if (id == '') {
+        const nodeId = inputNodeId.value.trim();
+        const node = getNodeById(nodeId);
+        if (!nodeId) {
             resultShowNode.textContent = 'Please Enter Node Id';
             return
         }

@@ -221,6 +221,7 @@ input::placeholder {
 
 .result {
   font-size: 0.87rem;
+  color: var(--primary-color);
 }
 
 @media (min-width: 768px) {

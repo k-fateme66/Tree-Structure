@@ -12,9 +12,9 @@ function getData(url) {
     axios
         .get(url)
         .then((response) => {
-            // تبدیل داده به گره‌های کلاس Node
+            // Process the data into nodes of the Node class
             treeData = processTree(response.data);
-            // Create tree on DOM
+            // Render the tree structure in the DOM
             displayTree(treeData);
         })
         .catch((error) => {
@@ -23,8 +23,14 @@ function getData(url) {
 }
 
 
+/**
+ * Set up event listeners and initialize tree rendering
+ * This runs once the DOM content has fully loaded
+ */
 document.addEventListener('DOMContentLoaded', () => {
+    // Fetch and display the tree data
     getData(apiGetTree);
+
     changeView(treeContainer);
     clickHandlerGetNodeId();
     clickHandlerSetNodeValue();
@@ -32,6 +38,5 @@ document.addEventListener('DOMContentLoaded', () => {
     clickHandlerShowNode();
     clickHandlerDrawLink();
     clickHandlerSetNodeName();
-    clickHandlerDrawLink();
     clickHandlerDrawRelate();
 });

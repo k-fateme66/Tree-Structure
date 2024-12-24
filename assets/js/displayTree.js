@@ -1,25 +1,25 @@
 const treeContainer = document.getElementById('tree');
 export function displayTree(node) {
-    // ایجاد عنصر HTML برای گره فعلی
+    // Create an HTML element for the current node
     const element = document.createElement("div");
     element.className = "node";
     element.dataset.value = node.value;
     element.dataset.id = node.id;
     element.innerHTML = `<span>${node.name}</span>`;
 
-    // اگر گره فرزند داشته باشد
+    // Check if the current node has children
     if (node.children && node.children.length > 0) {
         const childrenContainer = document.createElement("div");
         childrenContainer.className = "children";
         node.children.forEach((child) => {
-            childrenContainer.appendChild(displayTree(child)); // اضافه کردن فرزندان
+            childrenContainer.appendChild(displayTree(child));
         });
         element.appendChild(childrenContainer);
     }
 
-    // افزودن گره به درخت
+    // Append the container of children to the current node element
     treeContainer.appendChild(element);
 
-    // بازگرداندن عنصر برای فرزندان
+    // Append the current node element to the main tree container in the DOM
     return element;
 }

@@ -10,7 +10,7 @@ export default class Node {
         this.value = newValue;
         console.log(`Value of node ${this.id} changed to: ${this.value}`);
 
-        // به‌روزرسانی مقدار در DOM
+        // Update the value in the DOM
         const domNode = document.querySelector(`[data-id="${this.id}"]`);
         if (domNode) {
             domNode.dataset.value = newValue;
@@ -21,7 +21,7 @@ export default class Node {
         this.name = newName;
         console.log(`Name of node ${this.id} changed to: ${this.newName}`);
 
-        // به‌روزرسانی مقدار در DOM
+        // Update the value in the DOM
         const domNode = document.querySelector(`[data-id="${this.id}"] span`);
         if (domNode) {
             domNode.textContent = newName;

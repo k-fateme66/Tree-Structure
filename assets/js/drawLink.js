@@ -2,32 +2,32 @@ import { treeData } from "./app.js";
 import { getNodeById } from "./getNodeById.js";
 
 export function drawLink(nodeId, color) {
-    const path = []; // برای ذخیره مسیر گره‌ها
+    const path = [];  // Array to store the path of node IDs.
 
     function findPath(node, targetId) {
-        if (!node) return false; // اگر گره وجود ندارد، به پایان برس
+        if (!node) return false;  // Exit if the current node does not exist.
 
-        // گره فعلی را به مسیر اضافه کن
+        // Add the current node's ID to the path.
         path.push(node.id);
 
-        // اگر گره فعلی همان گره هدف است، مسیر کامل شده است
+        // Check if the current node is the target node.
         if (node.id === targetId) return true;
 
-        // اگر گره فرزندانی دارد، آن‌ها را بررسی کن
+        // Recursively check the children of the current node.
         if (node.children && node.children.length > 0) {
             for (let child of node.children) {
                 if (findPath(child, targetId)) {
-                    return true; // اگر مسیر در فرزندان پیدا شد، عملیات را متوقف کن
+                    return true; // Stop searching once the path is found.
                 }
             }
         }
 
-        // اگر گره فعلی در مسیر نباشد، آن را حذف کن
+        // Remove the current node from the path if it is not part of the final path.
         path.pop();
         return false;
     }
 
-    // جستجوی مسیر برای گره هدف
+    // Start finding the path to the target node.
     if (findPath(treeData, nodeId)) {
         console.log(`Path found: ${path}`);
     } else {
@@ -35,7 +35,7 @@ export function drawLink(nodeId, color) {
         return [];
     }
 
-    // کشیدن لینک‌ها یا کار با رنگ 
+    // Draw the links between nodes along the found path.
     console.log(`Draw links with color ${color}`);
     drawRelate(path, color);
     return path;
@@ -46,7 +46,7 @@ export function drawRelate(nodeIds, color) {
     nodeIds.map((nodeId) => {
         const node = getNodeById(nodeId);
         if (node) {
-            node.setColor(color); // تغییر رنگ گره
+            node.setColor(color);// Apply the specified color to the node
         } else {
             console.error(`Node with ID ${nodeIds[i]} not found.`);
         }
@@ -62,16 +62,19 @@ export function clickHandlerDrawLink() {
 
     btnDrawLink.addEventListener('click', (event) => {
         event.preventDefault();
-        const id = inputNodeId.value;
-        const color = inputColor.value;
 
-        if (id == '' || color == '') {
+        const nodeIds = inputNodeId.value.trim();
+        const color = inputColor.value.trim();
+
+        if (!nodeIds || !color) {
             resultDrawLink.textContent = 'Please Enter Node Id or color';
             return
         }
-        const path = drawLink(id, color);
+        const path = drawLink(nodeIds, color);
 
-        path.length > 0 ? resultDrawLink.textContent = `Path found: [${path}]` : "Node not found!"
+        resultDrawLink.textContent = path.length > 0
+            ? `Path found: [${path}]`
+            : "Node not found!";
     });
 };
 
@@ -83,10 +86,13 @@ export function clickHandlerDrawRelate() {
 
     btnDrawRelate.addEventListener('click', (event) => {
         event.preventDefault();
-        const nodeIds = inputNodeId.value.split(',');
-        const color = inputColor.value;
+        const nodeIds = inputNodeId.value
+            .split(',')
+            .map(id => id.trim()) // Trim spaces around IDs
+            .filter(Boolean); // Remove empty strings
+        const color = inputColor.value.trim();
 
-        if (nodeIds == '' || color == '') {
+        if (nodeIds.length === 0 || !color) {
             resultDrawRelate.textContent = 'Please Enter Nodes Id or color';
             return
         }
